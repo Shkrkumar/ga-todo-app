@@ -1,0 +1,21 @@
+name: Github Action 2
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: action/checkout@v3
+      - name: Setup Node
+        uses: action/setup-node@v3
+        with:
+          node-version: "16"
+      - name: install Dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+       
